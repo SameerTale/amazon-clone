@@ -10,7 +10,6 @@ export const getBasketTotal = (basket) => {
 export const getUserName = (user) => {
     const email = user?.email ?? "Guest";
     const firstName = email.split("@")[0];
-    console.log("FirstName >>>", firstName);
     return firstName || "Guest";
 }
 
@@ -20,6 +19,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 basket: [...state.basket, action.item],
+            };
+        case 'EMPTY_BASKET':
+            return {
+                ...state,
+                basket: [], 
             };
         case 'REMOVE_FROM_BASKET':
             let newBasket = [...state.basket];
